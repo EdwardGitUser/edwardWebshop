@@ -14,7 +14,7 @@ const products = [
     {
         name: 'Iphone 11',
         image: '/images/phone.jpg',
-        description: 'The iPhone 11 is a smartphone designed, developed, and marketed by Apple Inc. It is the thirteenth generation of iPhone, succeeding the iPhone XR, and was unveiled on September 10, 2019, alongside the higher-end iPhone 11 Pro at the Steve Jobs Theater in Apple Park, Cupertino, by Apple CEO Tim Cook. Preorders began on September 13, 2019, and the phone was officially released on September 20, 2019, one day after the official public release of iOS 13.',
+        description: 'The iPhone 11 is a smartphone designed, developed, and marketed by Apple Inc. It is the thirteenth generation of iPhone, succeeding the iPhone XR, and was unveiled on September 10, 2019, alongside the higher-end iPhone 11 Pro at the Steve Jobs Theater in Apple Park, Cupertino, by Apple CEO Tim Cook.',
         brand: 'Apple',
         category: 'Electronics',
         price: 600,
