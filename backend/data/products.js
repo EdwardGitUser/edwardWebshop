@@ -14,7 +14,7 @@ const products = [
     {
         name: 'Iphone 11',
         image: '/images/phone.jpg',
-        description: 'AirPods are wireless Bluetooth earbuds designed by Apple Inc. They were first announced on September 7, 2016, alongside the iPhone 7. Within two years, they became Apples most popular accessory.',
+        description: 'The iPhone 11 is a smartphone designed, developed, and marketed by Apple Inc. It is the thirteenth generation of iPhone, succeeding the iPhone XR, and was unveiled on September 10, 2019, alongside the higher-end iPhone 11 Pro at the Steve Jobs Theater in Apple Park, Cupertino, by Apple CEO Tim Cook. Preorders began on September 13, 2019, and the phone was officially released on September 20, 2019, one day after the official public release of iOS 13.',
         brand: 'Apple',
         category: 'Electronics',
         price: 600,
@@ -25,7 +25,7 @@ const products = [
     {
         name: 'Cannon Camera',
         image: '/images/camera.jpg',
-        description: 'AirPods are wireless Bluetooth earbuds designed by Apple Inc. They were first announced on September 7, 2016, alongside the iPhone 7. Within two years, they became Apples most popular accessory.',
+        description: 'A device that consists of a lightproof chamber with an aperture fitted with a lens and a shutter through which the image of an object is projected onto a surface for recording (as on a photosensitive film or an electronic sensor) or for translation into electrical impulses (as for television broadcast)',
         brand: 'Cannon',
         category: 'Electronics',
         price: 930,
@@ -36,7 +36,7 @@ const products = [
     {
         name: 'Playstation 4',
         image: '/images/playstation.jpg',
-        description: 'AirPods are wireless Bluetooth earbuds designed by Apple Inc. They were first announced on September 7, 2016, alongside the iPhone 7. Within two years, they became Apples most popular accessory.',
+        description: 'Store your games, apps, screenshots and videos with up to 1TB storage inside the PS4 console – slimmer and lighter than the original PS4 model and available in Jet Black and more colors.',
         brand: 'Sony',
         category: 'Electronics',
         price: 300,
@@ -47,7 +47,7 @@ const products = [
     {
         name: 'Logitech',
         image: '/images/mouse.jpg',
-        description: 'AirPods are wireless Bluetooth earbuds designed by Apple Inc. They were first announced on September 7, 2016, alongside the iPhone 7. Within two years, they became Apples most popular accessory.',
+        description: 'Logitech Options is a powerful and easy-to-use application that enhances your Logitech mice, keyboards, and touchpads. Customize your device with Options to achieve more, faster.',
         brand: 'Logitech',
         category: 'Electronics',
         price: 40,
@@ -58,7 +58,7 @@ const products = [
     {
         name: 'Amazon Echo',
         image: '/images/alexa.jpg',
-        description: 'AirPods are wireless Bluetooth earbuds designed by Apple Inc. They were first announced on September 7, 2016, alongside the iPhone 7. Within two years, they became Apples most popular accessory.',
+        description: 'Amazon Echo is a product line of hands-free speaker and virtual assistant devices that interact with an end user via the Amazon Alexa cloud-based voice service. Echo devices connect to the Alexa service via the internet.',
         brand: 'Amazon',
         category: 'Electronics',
         price: 30,
