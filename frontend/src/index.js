@@ -14,6 +14,8 @@ import './assets/styles/bootstrap.custom.css';
 import './assets/styles/index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import AdminRoute from './components/adminRoute';
+import OrderListScreen from './screens/admin/OrderListScreen';
 import HomeScreen from './screens/HomeScreen';
 import ProductScreen from './screens/ProductScreen';
 import CartScreen from './screens/CartScreen';
@@ -31,6 +33,9 @@ const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={<App />}>
             <Route index={true} path="/" element={<HomeScreen />} />
+            <Route path='/search/:keyword' element={<HomeScreen />} />
+            <Route path='/page/:pageNumber' element={<HomeScreen />} />
+            <Route path='/search/:keyword/page/:pageNumber'element={<HomeScreen />} />
             <Route path="/product/:id" element={<ProductScreen />} />
             <Route path="/cart" element={<CartScreen />} />
             <Route path="/login" element={<LoginScreen />} />
@@ -45,6 +50,10 @@ const router = createBrowserRouter(
                 <Route path='/profile' element={<ProfileScreen />} />
 
 
+            </Route>
+
+            <Route path='' element={<AdminRoute />}>
+                <Route path='/admin/orderlist' element={<OrderListScreen />} />
             </Route>
         </Route>
     )

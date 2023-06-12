@@ -1,12 +1,13 @@
 import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Row, Col, ListGroup, Image, Card, Button, ListGroupItem } from 'react-bootstrap';
+import { Row, Col, ListGroup, Image, Card, Button } from 'react-bootstrap';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 import {
     useGetOrderDetailsQuery,
     useGetPayPalClientIdQuery,
     usePayOrderMutation,
+    useDeliverOrderMutation,
 } from '../slices/ordersApiSlice';
 import { PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js';
 import { useSelector } from 'react-redux';
@@ -23,8 +24,10 @@ const OrderScreen = () => {
     } = useGetOrderDetailsQuery(orderId);
 
     const [payOrder, { isLoading: loadingPay }] = usePayOrderMutation();
+    const [deliverOrder, { isLoading: loadingDeliver }] = useDeliverOrderMutation();
     const [{ isPending }, paypalDispatch] = usePayPalScriptReducer();
     const { userInfo } = useSelector((state) => state.auth);
+
     const {
         data: paypal,
         isLoading: loadingPayPal,
@@ -90,7 +93,17 @@ const OrderScreen = () => {
           });
       }
     
-
+    const deliverOrderHandler = async () => {
+        
+        try {
+            await deliverOrder(orderId);
+            refetch();
+            toast.success('Order delivered');
+        } catch (err) {
+            toast.error(err?.data?.message || err.message);
+            
+        }
+      };
 
 
     return isLoading ? (
@@ -99,13 +112,13 @@ const OrderScreen = () => {
         <Message variant='danger'>{error}</Message>
       ) : (
         <>
-        <h1>Order {order._id}</h1>
+        <h1 >Order {order._id}</h1>
         <Row>
         <Col md={8}>
                             
             <ListGroup variant='flush'>
               <ListGroup.Item>
-              <h2>Shipping:</h2>
+              <h2 class="text-info">Shipping:</h2>
               <p>
                 <strong>Name: </strong> {order.user.name}
               </p>
@@ -129,7 +142,7 @@ const OrderScreen = () => {
                             
 
                 <ListGroup.Item>
-              <h2>Payment Method:</h2>
+              <h2 class="text-info">Payment Method:</h2>
               <p>
                 <strong>Method: </strong>
                 {order.paymentMethod}
@@ -143,7 +156,7 @@ const OrderScreen = () => {
                             
 
             <ListGroup.Item>
-              <h2>Order Items:</h2>
+              <h2 class="text-info">Order Items:</h2>
               {order.orderItems.length === 0 ? (
                 <Message>Order is empty</Message>
               ) : (
@@ -183,7 +196,7 @@ const OrderScreen = () => {
                         <ListGroup variant='flush'>
                                     
                         <ListGroup.Item>
-                        <h2>Order Summary</h2>        
+                        <h2 class="text-info">Order Summary</h2>        
                         </ListGroup.Item>
 
                 <ListGroup.Item>
@@ -213,12 +226,12 @@ const OrderScreen = () => {
                                             {loadingPay && <Loader />}
                                             {isPending ? <Loader /> : (
                                                 <div>
-                                                    {/* <Button
+                                                    <Button
                                                         onClick={onApproveTest}
                                                         style={{ marginBottom: '10px' }}
                                                     >
-                                                        Test Pay Order
-                                                    </Button> */}
+                                                        Pay later
+                                                    </Button>
                                                     <div>
                                                         <PayPalButtons
                                                             createOrder={createOrder}
@@ -230,6 +243,23 @@ const OrderScreen = () => {
                                             )}
                                         </ListGroup.Item>
                                     )}
+                                    {loadingDeliver && <Loader />}
+
+                                    {userInfo &&
+                                    userInfo.isAdmin &&
+                                    order.isPaid &&
+                                    !order.isDelivered && (
+                                        <ListGroup.Item>
+                                        <Button
+                                            type='button'
+                                            className='btn btn-block'
+                                            onClick={deliverOrderHandler}
+                                        >
+                                            Mark As Delivered
+                                        </Button>
+                                        </ListGroup.Item>
+                                    )}
+
                         </ListGroup>
                     </Card>
             </Col>

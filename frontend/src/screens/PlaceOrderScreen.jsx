@@ -51,7 +51,7 @@ const PlaceOrderScreen = () => {
             <Col md={8}>
                 <ListGroup variant='flush'>
                     <ListGroup.Item>
-                        <h2>Shipping</h2>
+                        <h2 class="text-info">Shipping</h2>
                         <p>
                             <strong>Address: </strong>
                             {cart.shippingAddress.address}, {cart.shippingAddress.city}{' '}
@@ -61,14 +61,14 @@ const PlaceOrderScreen = () => {
                     </ListGroup.Item>
                     
                     <ListGroup.Item>
-                        <h2>Payment Method</h2>
+                        <h2 class="text-info">Payment Method</h2>
                         <strong>Method: </strong>
                         {cart.paymentMethod}
                     </ListGroup.Item>
                     
                     
                     <ListGroup.Item>
-                        <h2>Order Items</h2>
+                        <h2 class="text-info">Order Items</h2>
                         {cart.cartItems.length === 0 ? (
                             <Message>Your cart is empty</Message>
                         ) : (
@@ -105,7 +105,7 @@ const PlaceOrderScreen = () => {
                 <Card>
                     <ListGroup variant='flush'>
                         <ListGroup.Item>
-                            <h2>Order Summary</h2>
+                            <h2 class="text-info">Order Summary</h2>
                         </ListGroup.Item>
                         <ListGroup.Item>
                             <Row>
