@@ -10,8 +10,10 @@ import Loader from '../components/Loader';
 import Message from '../components/Message';
 import { useGetProductDetailsQuery, useCreateReviewMutation } from '../slices/productsApiSlice';
 import { addToCart } from '../slices/cartSlice';
+import useLanguageSwitcher from '../components/useLanguageSwitcher';
 
 const ProductScreen = () => {
+    const { t, changeLanguage } = useLanguageSwitcher();
 
     const { id: productId } = useParams();
     
@@ -53,7 +55,7 @@ const ProductScreen = () => {
     return (
         <>
         <Link className='btn btn-light my-3' to='/'>
-            Go back
+        {t('goback')}
             </Link>
 
             {isLoading ? (
@@ -75,10 +77,10 @@ const ProductScreen = () => {
                         <Rating value={product.rating} text={`${product.numReviews} reviews`} />
                     </ListGroup.Item>
                     <ListGroup.Item>
-                        Price: ${product.price}
+                    {t('price')} ${product.price}
                     </ListGroup.Item>
                     <ListGroup.Item>
-                        Description: {product.description}
+                    {t('desc')} {product.description}
                     </ListGroup.Item>
                 </ListGroup>
             </Col>
@@ -87,13 +89,13 @@ const ProductScreen = () => {
                     <ListGroup variant='flush'>
                         <ListGroup.Item>
                             <Row>
-                                <Col>Price:</Col>
+                                <Col>{t('price')}</Col>
                                 <Col><strong>${ product.price }</strong></Col>
                             </Row>
                         </ListGroup.Item>
                         <ListGroup.Item>
                             <Row>
-                                <Col>Status:</Col>
+                                <Col>{t('status')}</Col>
                                 <Col><strong> { product.countInStock > 0 ? 'In Stock' : 'Out of Stock' }</strong></Col>
                             </Row>
                         </ListGroup.Item>
@@ -101,7 +103,7 @@ const ProductScreen = () => {
                         {product.countInStock > 0 && (
                             <ListGroup.Item>
                                 <Row>
-                                    <Col>Qty</Col>
+                                    <Col>{t('qty')}</Col>
                                     <Col>
                                         <Form.Control
                                             as='select'
@@ -126,7 +128,7 @@ const ProductScreen = () => {
                                 disabled={product.countInStock === 0}
                                 onClick={addToCartHandler}
                             >
-                                Add To Cart
+                                {t('addtocart')}
                             </Button>
                         </ListGroup.Item>
                     </ListGroup>
@@ -135,7 +137,7 @@ const ProductScreen = () => {
                             </Row>
                             <Row className='review'>
                                 <Col md={6}>
-                                    <h2>Reviews:</h2>
+                                    <h2>{t('rev')}</h2>
                                     {product.reviews.length === 0 && <Message>No Reviews</Message>}
                                     <ListGroup variant='flush'>
                                         {product.reviews.map((review) => (
@@ -148,21 +150,21 @@ const ProductScreen = () => {
                                         ))}
 
                   <ListGroup.Item>
-                  <h2>Write a Customer Review</h2>
+                  <h2>{t('custrev')}</h2>
 
                   {loadingProductReview && <Loader />}
 
                   {userInfo ? (
                     <Form onSubmit={submitHandler}>
                       <Form.Group className='my-2' controlId='rating'>
-                        <Form.Label>Rating</Form.Label>
+                        <Form.Label>{t('rating')}</Form.Label>
                         <Form.Control
                           as='select'
                           required
                           value={rating}
                           onChange={(e) => setRating(e.target.value)}
                         >
-                          <option value=''>Select...</option>
+                          <option value=''>{t('select')}</option>
                           <option value='1'>1 - Poor</option>
                           <option value='2'>2 - Fair</option>
                           <option value='3'>3 - Good</option>
@@ -171,7 +173,7 @@ const ProductScreen = () => {
                         </Form.Control>
                       </Form.Group>
                       <Form.Group className='my-2' controlId='comment'>
-                        <Form.Label>Comment</Form.Label>
+                        <Form.Label>{t('com')}</Form.Label>
                         <Form.Control
                           as='textarea'
                           row='3'
@@ -185,12 +187,12 @@ const ProductScreen = () => {
                         type='submit'
                         variant='primary'
                       >
-                        Submit
+                        {t('sub')}
                       </Button>
                     </Form>
                   ) : (
                     <Message>
-                      Please <Link to='/login'>sign in</Link> to write a review
+                      {t('pl')} <Link to='/login'>{t('in')}</Link> {t('to')}
                     </Message>
                   )}
                 </ListGroup.Item>

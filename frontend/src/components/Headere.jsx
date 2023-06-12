@@ -8,9 +8,15 @@ import { useLogoutMutation } from '../slices/usersApiSlice';
 import { logout } from '../slices/authSlice';
 import logo from "../assets/logo.png";
 import SearchBox from './SearchBox';
+import { useTranslation } from 'react-i18next';
+
 import '../assets/styles/header.css';
 const Headere = () => {
-
+    const { t, i18n } = useTranslation();
+    const changeLanguage = (language) => {
+        i18n.changeLanguage(language);
+      };
+      
     const { cartItems } = useSelector((state) => state.cart);
     const { userInfo } = useSelector((state) => state.auth);
     
@@ -29,6 +35,21 @@ const Headere = () => {
         }
       };
 
+    const whiteAndBold = {
+        color: 'white',
+        
+    };
+    const buttonStyle = {
+        marginRight: '25px',
+        color: 'white',
+       
+    };
+    
+    const logoStyle = {
+        marginLeft: '10px',
+        color: 'black',
+        fontWeight: 'bold',
+    };
     return (
         <header>
             <Navbar className="navbar-gradient" variant="dark" expand="md"  collapseOnSelect>
@@ -36,16 +57,18 @@ const Headere = () => {
                     <LinkContainer to='/'>
                     <Navbar.Brand>
                         <img src={logo} alt="123" />
-                        Webshop
+                        <span style={logoStyle}>EdWebshop</span>
                     </Navbar.Brand>
                     </LinkContainer>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="ms-auto">
+                            <Nav.Link onClick={() => changeLanguage('en')} style={whiteAndBold} >EN</Nav.Link>
+                            <Nav.Link onClick={() => changeLanguage('uk')} style={buttonStyle}>UK</Nav.Link>
                             <SearchBox />
                             <LinkContainer to='/cart'>
                                 <Nav.Link >
-                                    <FaShoppingCart />Cart
+                                    <FaShoppingCart />{t('cart')}
                                     {
                                         cartItems.length > 0 && (
                                             <Badge pill bd='success' style={{marginLeft: '5px'}}>
@@ -56,18 +79,18 @@ const Headere = () => {
                                 </Nav.Link>
                             </LinkContainer>
                             {userInfo ? (
-                                <NavDropdown title={userInfo.name} id='username'>
+                                 <NavDropdown  title={userInfo.name} id='username'>
                                     <LinkContainer to='/profile'>
-                                        <NavDropdown.Item>Profile</NavDropdown.Item>
+                                        <NavDropdown.Item>{t('prof')}</NavDropdown.Item>
                                     </LinkContainer>
 
                                     <NavDropdown.Item onClick={logoutHandler}>
-                                        Logout
+                                    {t('logout')}
                                     </NavDropdown.Item>
                                 </NavDropdown>
                             ): (
                                 <LinkContainer to='/login'>
-                                <Nav.Link href = "/login"><FaUser />Sign in</Nav.Link>
+                                <Nav.Link href = "/login"><FaUser />{t('signin')}</Nav.Link>
                                 </LinkContainer>
                             ) }
                                 {/* Admin Links */}

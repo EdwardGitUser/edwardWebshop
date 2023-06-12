@@ -1,0 +1,38 @@
+{
+    "mainitems": "Latest Products",
+    "goback": "Go back",
+    "price": "Price: ",
+    "desc": "Description: ",
+    "status": "Status:",
+    "qty": "Quantity:",
+    "addtocart": "Add to cart",
+    "rev": "Reviews:",
+    "custrev": "Add your review:",
+    "rating": "Rating:",
+    "select": "Select",
+    "com": "Comment:",
+    "sub": "Submit",
+    "pl": "Please",
+    "in": "sign in",
+    "to": "to write a review",
+
+
+    "signin": " Sign In",
+    "em": "Email Address",
+    "en_em": "Enter email",
+    "pas": "Password",
+    "en_pas": "Enter Password",
+    "new": "New Customer? ",
+    "reg": "Register",
+    
+    "name": "Name",
+    "pass_2": "Confirm Password",
+    "all": "Already have an account? ",
+
+    "ser_prod": "Search Products...",
+    "ser": "Search",
+    "cart": " Cart",
+    "prof": "Profile",
+    "logout": "Logout"
+  }
+  

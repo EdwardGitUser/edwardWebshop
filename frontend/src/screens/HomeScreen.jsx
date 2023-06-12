@@ -8,10 +8,12 @@ import Message from '../components/Message';
 import ProductCarousel from '../components/ProductCarousel';
 import { useGetProductsQuery } from '../slices/productsApiSlice';
 import Paginate from '../components/Paginate';
-
+import { useTranslation } from 'react-i18next';
+import useLanguageSwitcher from '../components/useLanguageSwitcher';
 
 const HomeScreen = () => {
-
+    const { t, changeLanguage } = useLanguageSwitcher();
+      
     const { pageNumber, keyword } = useParams();
 
     const { data, isLoading, error } = useGetProductsQuery({keyword, pageNumber});
@@ -23,7 +25,7 @@ const HomeScreen = () => {
                 <ProductCarousel />
             ) : (
                 <Link to='/' className='btn btn-light mb-4'>
-                Go Back
+                {t('goback')}
                 </Link>
             )}
             {isLoading ? (
@@ -32,7 +34,7 @@ const HomeScreen = () => {
                     <Message variant='danger'>{error?.data?.message || error.error}</Message>
                 ) : (
                 <>
-                <h1 class="text-info">Latest Products</h1>
+                <h1 class="text-info">{t('mainitems')}</h1>
                 <Row>
                     {data.products.map((product) => (
                         <Col key={ product._id } sm={12} md={6} lg={4} xl={3}>

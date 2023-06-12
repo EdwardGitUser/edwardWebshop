@@ -7,9 +7,10 @@ import FormContainer from '../components/FormContainer';
 import { useLoginMutation } from '../slices/usersApiSlice';
 import { setCredentials } from '../slices/authSlice';
 import { toast } from 'react-toastify';
-
+import useLanguageSwitcher from '../components/useLanguageSwitcher';
 
 const LoginScreen = () => {
+  const { t, changeLanguage } = useLanguageSwitcher();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -43,11 +44,11 @@ const LoginScreen = () => {
 
   return (
     <FormContainer>
-      <h1 class="text-info">Sign In</h1>
+      <h1 class="text-info">{t('signin')}</h1>
 
       <Form onSubmit={submitHandler}>
         <Form.Group className='my-3' controlId='email'>
-          <Form.Label>Email Address</Form.Label>
+          <Form.Label>{t('em')}</Form.Label>
           <Form.Control
             type='email'
             placeholder='Enter email'
@@ -57,7 +58,7 @@ const LoginScreen = () => {
         </Form.Group>
 
         <Form.Group className='my-3' controlId='password'>
-          <Form.Label>Password</Form.Label>
+          <Form.Label>{t('pas')}</Form.Label>
           <Form.Control
             type='password'
             placeholder='Enter password'
@@ -67,16 +68,16 @@ const LoginScreen = () => {
         </Form.Group>
 
         <Button  type='submit' variant='primary' className='mt-2' disabled={isLoading}>
-          Sign In
+        {t('signin')}
         </Button>
             {isLoading && <Loader />}
       </Form>
 
       <Row className='py-3'>
         <Col>
-          New Customer?{' '}
+        {t('new')}{' '}
           <Link to={redirect ? `/register?redirect=${redirect}` : '/register'}>
-              Register
+          {t('reg')}
           </Link>
         </Col>
       </Row>

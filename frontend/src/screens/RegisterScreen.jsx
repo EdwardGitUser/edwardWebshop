@@ -8,8 +8,12 @@ import FormContainer from '../components/FormContainer';
 import { useRegisterMutation } from '../slices/usersApiSlice';
 import { setCredentials } from '../slices/authSlice';
 import { toast } from 'react-toastify';
+import useLanguageSwitcher from '../components/useLanguageSwitcher';
+
 
 const RegisterScreen = () => {
+  const { t, changeLanguage } = useLanguageSwitcher();
+    
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -50,10 +54,10 @@ const RegisterScreen = () => {
 
   return (
     <FormContainer>
-      <h1 class="text-info">Register</h1>
+      <h1 class="text-info">{t('reg')}</h1>
       <Form onSubmit={submitHandler}>
         <Form.Group className='my-2' controlId='name'>
-          <Form.Label>Name</Form.Label>
+          <Form.Label>{t('name')}</Form.Label>
           <Form.Control
             type='name'
             placeholder='Enter name'
@@ -63,7 +67,7 @@ const RegisterScreen = () => {
         </Form.Group>
 
         <Form.Group className='my-2' controlId='email'>
-          <Form.Label>Email Address</Form.Label>
+          <Form.Label>{t('em')}</Form.Label>
           <Form.Control
             type='email'
             placeholder='Enter email'
@@ -73,7 +77,7 @@ const RegisterScreen = () => {
         </Form.Group>
 
         <Form.Group className='my-2' controlId='password'>
-          <Form.Label>Password</Form.Label>
+          <Form.Label>{t('pas')}</Form.Label>
           <Form.Control
             type='password'
             placeholder='Enter password'
@@ -82,7 +86,7 @@ const RegisterScreen = () => {
           ></Form.Control>
         </Form.Group>
         <Form.Group className='my-2' controlId='confirmPassword'>
-          <Form.Label>Confirm Password</Form.Label>
+          <Form.Label>{t('pass_2')}</Form.Label>
           <Form.Control
             type='password'
             placeholder='Confirm password'
@@ -92,7 +96,7 @@ const RegisterScreen = () => {
         </Form.Group>
 
         <Button disabled={isLoading} type='submit' variant='primary'>
-          Register
+        {t('reg')}
         </Button>
 
         {isLoading && <Loader />}
@@ -100,9 +104,9 @@ const RegisterScreen = () => {
 
       <Row className='py-3'>
         <Col>
-          Already have an account?{' '}
+        {t('all')}{' '}
           <Link to={redirect ? `/login?redirect=${redirect}` : '/login'}>
-            Login
+          {t('signin')}
           </Link>
         </Col>
       </Row>
