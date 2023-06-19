@@ -5,8 +5,11 @@ import { useNavigate } from 'react-router-dom';
 import FormContainer from '../components/FormContainer';
 import CheckoutSteps from '../components/CheckoutSteps';
 import { saveShippingAddress } from '../slices/cartSlice';
+import useLanguageSwitcher from '../components/useLanguageSwitcher';
 
 const ShippingScreen = () => {
+
+const { t } = useLanguageSwitcher();
   const cart = useSelector((state) => state.cart);
   const { shippingAddress } = cart;
 
@@ -21,30 +24,40 @@ const ShippingScreen = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(saveShippingAddress({ address, city, postalCode, country }));
-    navigate('/payment');
-  };
+      navigate('/payment');
+      
+      setAddress('');
+    };
+    
+    const clearInputs = () => {
+        setAddress('');
+        setCity('');
+        setPostalCode('');
+        setCountry('');
+      };
 
   return (
     <FormContainer>
       <CheckoutSteps step1 step2 />
-      <h1 class="text-info">Shipping</h1>
+      <h1 class="text-info">{t('ship')}</h1>
       <Form onSubmit={submitHandler}>
         <Form.Group className='my-2' controlId='address'>
-          <Form.Label>Address</Form.Label>
+          <Form.Label>{t('address')}</Form.Label>
           <Form.Control
             type='text'
-            placeholder='Enter address'
+            placeholder={t('enteraddr')}
             value={address}
             required
             onChange={(e) => setAddress(e.target.value)}
+            
           ></Form.Control>
         </Form.Group>
 
         <Form.Group className='my-2' controlId='city'>
-          <Form.Label>City</Form.Label>
+          <Form.Label>{t('city')}</Form.Label>
           <Form.Control
             type='text'
-            placeholder='Enter city'
+            placeholder={t('entercity')}
             value={city}
             required
             onChange={(e) => setCity(e.target.value)}
@@ -52,10 +65,10 @@ const ShippingScreen = () => {
         </Form.Group>
 
         <Form.Group className='my-2' controlId='postalCode'>
-          <Form.Label>Postal Code</Form.Label>
+          <Form.Label>{t('postindex')}</Form.Label>
           <Form.Control
             type='text'
-            placeholder='Enter postal code'
+            placeholder={t('postindex')}
             value={postalCode}
             required
             onChange={(e) => setPostalCode(e.target.value)}
@@ -63,10 +76,10 @@ const ShippingScreen = () => {
         </Form.Group>
 
         <Form.Group className='my-2' controlId='country'>
-          <Form.Label>Country</Form.Label>
+          <Form.Label>{t('ctr')}</Form.Label>
           <Form.Control
             type='text'
-            placeholder='Enter country'
+            placeholder={t('enterctr')}
             value={country}
             required
             onChange={(e) => setCountry(e.target.value)}
@@ -74,7 +87,10 @@ const ShippingScreen = () => {
         </Form.Group>
 
         <Button type='submit' variant='primary'>
-          Continue
+        {t('contin')}
+        </Button>
+        <Button variant='secondary' onClick={clearInputs} style={{ marginLeft: '10px' }}>
+        {t('clear')}
         </Button>
       </Form>
     </FormContainer>

@@ -9,8 +9,10 @@ import Loader from '../components/Loader';
 import { useProfileMutation } from '../slices/usersApiSlice';
 import { setCredentials } from '../slices/authSlice';
 import { useGetMyOrdersQuery } from '../slices/ordersApiSlice';
+import useLanguageSwitcher from '../components/useLanguageSwitcher';
 
 const ProfileScreen = () => {
+    const { t } = useLanguageSwitcher();
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -51,24 +53,24 @@ const ProfileScreen = () => {
 
     return <Row>
         <Col md={3}>
-            <h2 class="text-info">User Profile</h2>
+            <h2 class="text-info">{t('userprofile')}</h2>
 
         <Form onSubmit={submitHandler}>
             <Form.Group className='my-2' controlId='name'>
-            <Form.Label>Name:</Form.Label>
+            <Form.Label>{t('name')}</Form.Label>
             <Form.Control
               type='name'
-              placeholder='Enter name'
+              placeholder={t('entername')}
               value={name}
               onChange={(e) => setName(e.target.value)}
             ></Form.Control>
           </Form.Group>
 
             <Form.Group className='my-2' controlId='email'>
-            <Form.Label>Email Address:</Form.Label>
+            <Form.Label>{t('em')}</Form.Label>
             <Form.Control
               type='email'
-              placeholder='Enter email'
+              placeholder={t('en_em')}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             ></Form.Control>
@@ -76,34 +78,34 @@ const ProfileScreen = () => {
             
             
             <Form.Group className='my-2' controlId='password'>
-            <Form.Label>Password:</Form.Label>
+            <Form.Label>{t('pas')}</Form.Label>
             <Form.Control
               type='password'
-              placeholder='Enter password'
+              placeholder={t('en_pas')}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             ></Form.Control>
             </Form.Group>
             
             <Form.Group className='my-2' controlId='confirmPassword'>
-            <Form.Label>Confirm Password:</Form.Label>
+            <Form.Label>{t('pass_2')}</Form.Label>
             <Form.Control
               type='password'
-              placeholder='Confirm password'
+              placeholder={t('pass_2')}
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             ></Form.Control>
                 </Form.Group>
                 
             <Button type='submit' variant='primary'>
-            Update
+            {t('update')}
             </Button>
             {loadingUpdateProfile && <Loader />}
         </Form>
         </Col>
 
         <Col md={9}>
-        <h2 class="text-info">My Orders:</h2>
+        <h2 class="text-info">{t('myorders')}</h2>
         {isLoading ? (
           <Loader />
         ) : error ? (
@@ -111,7 +113,7 @@ const ProfileScreen = () => {
             {error?.data?.message || error.error}
           </Message>
         ) : (
-          <Table striped table hover responsive className='table-sm'>
+            <Table striped hover responsive className='table-sm'>
             <thead>
               <tr>
                 <th>ID</th>
@@ -125,7 +127,7 @@ const ProfileScreen = () => {
             <tbody>
               {orders.map((order) => (
                 <tr key={order._id}>
-                  <tD>{order._id}</tD>
+                  <td>{order._id}</td>
                   <td>{order.createdAt.substring(0, 10)}</td>
                   <td>{order.totalPrice}</td>
                   <td>

@@ -8,8 +8,12 @@ import Loader from '../components/Loader';
 import Message from '../components/Message';
 import { useCreateOrderMutation } from '../slices/ordersApiSlice';
 import { clearCartItems } from '../slices/cartSlice';
+import useLanguageSwitcher from '../components/useLanguageSwitcher';
 
 const PlaceOrderScreen = () => {
+
+    const { t } = useLanguageSwitcher();
+
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const cart = useSelector((state) => state.cart);
@@ -51,9 +55,9 @@ const PlaceOrderScreen = () => {
             <Col md={8}>
                 <ListGroup variant='flush'>
                     <ListGroup.Item>
-                        <h2 class="text-info">Shipping</h2>
+                        <h2 class="text-info">{t('ship')}</h2>
                         <p>
-                            <strong>Address: </strong>
+                            <strong>{t('address')}: </strong>
                             {cart.shippingAddress.address}, {cart.shippingAddress.city}{' '}
                             {cart.shippingAddress.postalCode},{' '}
                             {cart.shippingAddress.country}
@@ -61,16 +65,16 @@ const PlaceOrderScreen = () => {
                     </ListGroup.Item>
                     
                     <ListGroup.Item>
-                        <h2 class="text-info">Payment Method</h2>
-                        <strong>Method: </strong>
+                        <h2 class="text-info">{t('paymethod')}</h2>
+                        <strong>{t('method')} </strong>
                         {cart.paymentMethod}
                     </ListGroup.Item>
                     
                     
                     <ListGroup.Item>
-                        <h2 class="text-info">Order Items</h2>
+                        <h2 class="text-info">{t('orderitems')}</h2>
                         {cart.cartItems.length === 0 ? (
-                            <Message>Your cart is empty</Message>
+                            <Message>{t('cartempty')}</Message>
                         ) : (
                             <ListGroup variant='flush'>
                                 {cart.cartItems.map((item, index) => (
@@ -105,29 +109,29 @@ const PlaceOrderScreen = () => {
                 <Card>
                     <ListGroup variant='flush'>
                         <ListGroup.Item>
-                            <h2 class="text-info">Order Summary</h2>
+                            <h2 class="text-info">{t('ordersum')}</h2>
                         </ListGroup.Item>
                         <ListGroup.Item>
                             <Row>
-                                <Col>Items</Col>
+                                <Col>{t('itemsorder')}</Col>
                                 <Col>${cart.itemsPrice}</Col>
                             </Row>
                         </ListGroup.Item>
                         <ListGroup.Item>
                             <Row>
-                                <Col>Shipping</Col>
+                                <Col>{t('ship')}</Col>
                                 <Col>${cart.shippingPrice}</Col>
                             </Row>
                         </ListGroup.Item>
                         <ListGroup.Item>
                             <Row>
-                                <Col>Tax</Col>
+                                <Col>{t('tax')}</Col>
                                 <Col>${cart.taxPrice}</Col>
                             </Row>
                         </ListGroup.Item>
                         <ListGroup.Item>
                             <Row>
-                                <Col>Total</Col>
+                                <Col>{t('totalorder')}</Col>
                                 <Col>${cart.totalPrice}</Col>
                             </Row>
                         </ListGroup.Item>
@@ -141,7 +145,7 @@ const PlaceOrderScreen = () => {
                                 disabled={cart.cartItems.length === 0}
                                 onClick={placeOrderHandler}
                             >
-                                Place Order
+                               {t('order')}
                             </Button>
                             {isLoading && <Loader />}
                         </ListGroup.Item>

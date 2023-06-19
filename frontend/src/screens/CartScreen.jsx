@@ -5,9 +5,12 @@ import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap'
 import { FaTrash } from 'react-icons/fa';
 import Message from '../components/Message';
 import { addToCart, removeFromCart } from '../slices/cartSlice';
-
+import useLanguageSwitcher from '../components/useLanguageSwitcher';
 
 const CartScreen = () => {
+
+    const { t } = useLanguageSwitcher();
+
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -26,12 +29,15 @@ const CartScreen = () => {
         navigate('/login?redirect=/shipping');
     };
 
+    const redirectToHome = () => {
+        navigate('/');
+      };
     return <Row>
         <Col md={8}>
-            <h1 style={{ marginBottom: '20px' }} class="text-info"> Shopping Cart </h1>
+            <h1 style={{ marginBottom: '20px' }} class="text-info"> {t('shopcart')} </h1>
             {cartItems.length === 0 ? (
                 <Message>
-                    Your cart is empty <Link to='/'>Go Back</Link>
+                    {t('cartempty')} <Link to='/'>{t('goback')}</Link>
                 </Message>
             ) : (
                 <ListGroup variant ='flush'>
@@ -76,7 +82,7 @@ const CartScreen = () => {
                 <ListGroup variant='flush'>
                     <ListGroup.Item>
                         <h2 class="text-info">
-                            Subtotal ({ cartItems.reduce((acc, item) => acc + item.qty, 0) }) items
+                        {t('subtotal')} ({ cartItems.reduce((acc, item) => acc + item.qty, 0) }) {t('items')}
                         </h2>
                         ${ cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)}
                     </ListGroup.Item>
@@ -87,11 +93,21 @@ const CartScreen = () => {
                             disabled={cartItems.length === 0}
                             onClick={ checkoutHandler }
                         >
-                            Proceed To Checkout
+                            {t('tocheckout')}
                         </Button>
                     </ListGroup.Item>
                 </ListGroup>
             </Card>
+            <ListGroup.Item>
+          <Button
+            type='button'
+            className='btn-block'
+                    onClick={redirectToHome}
+                    style={{ marginTop: '15px' }}
+          >
+            {t('goback')}
+          </Button>
+        </ListGroup.Item>
         </Col>
     </Row>;
 };

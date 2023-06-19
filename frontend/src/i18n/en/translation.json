@@ -26,6 +26,7 @@
     "reg": "Register",
     
     "name": "Name",
+    "entername": "Enter name",
     "pass_2": "Confirm Password",
     "all": "Already have an account? ",
 
@@ -33,6 +34,47 @@
     "ser": "Search",
     "cart": " Cart",
     "prof": "Profile",
-    "logout": "Logout"
+    "logout": "Logout",
+
+    "shopcart": "Shopping cart:",
+    "cartempty": "Your cart is empty :(",
+    "subtotal": "Subtotal",
+    "items": "items",
+    "tocheckout": "Proceed to checkout",
+
+    "home": "Cart",
+    "ship": "Shipping",
+    "pay": "Payment",
+    "order": "Place order",
+    "address": "Address",
+    "enteraddr": "Enter address",
+    "city": "City",
+    "entercity": "Enter city",
+    "postindex": "Postal Code",
+    "enterpostindex": "Enter postal code",
+    "ctr": "Country",
+    "enterctr": "Enter country",
+    "contin": "Continue",
+    "clear": "Clear",
+    "paymethod": "Payment Method",
+    "selectm": "Select Method",
+    "paypalorcredit": "Paypal or Credit Card",
+
+    "orderitems": "Order Items",
+    "ordersum": "Order Summary",
+    "method": "Method:",
+    "itemsorder": "Before tax",
+    "tax": "Tax",
+    "totalorder": "Total",
+
+    "orderorder": "Order",
+    "email": "Email",
+    "not_paid": "Waiting to be payed",
+    "paid": "Paid on",
+
+    "userprofile": "User Profile",
+    "myorders": "My Orders:",
+    "update": "Update"
+
   }
   
