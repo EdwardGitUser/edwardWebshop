@@ -1,71 +1,76 @@
 const products = [
     {
-        name: 'Airpods Headphones super duper puper 3',
+        name: 'Airpods Wireless Bluetooth Headphones',
         image: '/images/airpods.jpg',
-        description: 'AirPods are wireless Bluetooth earbuds designed by Apple Inc. They were first announced on September 7, 2016, alongside the iPhone 7. Within two years, they became Apples most popular accessory.',
+        description:
+            'Bluetooth technology lets you connect it with compatible devices wirelessly High-quality AAC audio offers immersive listening experience Built-in microphone allows you to take calls while working',
         brand: 'Apple',
         category: 'Electronics',
-        price: 90,
+        price: 89.99,
         countInStock: 10,
         rating: 4.5,
         numReviews: 12,
-        
     },
     {
-        name: 'Iphone 11',
+        name: 'iPhone 13 Pro 256GB Memory',
         image: '/images/phone.jpg',
-        description: 'The iPhone 11 is a smartphone designed, developed, and marketed by Apple Inc. It is the thirteenth generation of iPhone, succeeding the iPhone XR, and was unveiled on September 10, 2019, alongside the higher-end iPhone 11 Pro at the Steve Jobs Theater in Apple Park, Cupertino, by Apple CEO Tim Cook.',
+        description:
+            'Introducing the iPhone 13 Pro. A transformative triple-camera system that adds tons of capability without complexity. An unprecedented leap in battery life',
         brand: 'Apple',
         category: 'Electronics',
-        price: 600,
+        price: 599.99,
         countInStock: 7,
         rating: 4.0,
         numReviews: 8,
     },
     {
-        name: 'Cannon Camera',
+        name: 'Cannon EOS 80D DSLR Camera',
         image: '/images/camera.jpg',
-        description: 'A device that consists of a lightproof chamber with an aperture fitted with a lens and a shutter through which the image of an object is projected onto a surface for recording (as on a photosensitive film or an electronic sensor) or for translation into electrical impulses (as for television broadcast)',
+        description:
+            'Characterized by versatile imaging specs, the Canon EOS 80D further clarifies itself using a pair of robust focusing systems and an intuitive design',
         brand: 'Cannon',
         category: 'Electronics',
-        price: 930,
+        price: 929.99,
         countInStock: 5,
         rating: 3,
         numReviews: 12,
     },
     {
-        name: 'Playstation 4',
+        name: 'Sony Playstation 5',
         image: '/images/playstation.jpg',
-        description: 'Store your games, apps, screenshots and videos with up to 1TB storage inside the PS4 console – slimmer and lighter than the original PS4 model and available in Jet Black and more colors.',
+        description:
+            'The ultimate home entertainment center starts with PlayStation. Whether you are into gaming, HD movies, television, music',
         brand: 'Sony',
         category: 'Electronics',
-        price: 300,
+        price: 399.99,
         countInStock: 11,
         rating: 5,
         numReviews: 12,
     },
     {
-        name: 'Logitech',
+        name: 'Logitech G-Series Gaming Mouse',
         image: '/images/mouse.jpg',
-        description: 'Logitech Options is a powerful and easy-to-use application that enhances your Logitech mice, keyboards, and touchpads. Customize your device with Options to achieve more, faster.',
+        description:
+            'Get a better handle on your games with this Logitech LIGHTSYNC gaming mouse. The six programmable buttons allow customization for a smooth playing experience',
         brand: 'Logitech',
         category: 'Electronics',
-        price: 40,
-        countInStock: 2,
+        price: 49.99,
+        countInStock: 7,
         rating: 3.5,
-        numReviews: 16,
+        numReviews: 10,
     },
     {
-        name: 'Amazon Echo',
+        name: 'Amazon Echo Dot 3rd Generation',
         image: '/images/alexa.jpg',
-        description: 'Amazon Echo is a product line of hands-free speaker and virtual assistant devices that interact with an end user via the Amazon Alexa cloud-based voice service. Echo devices connect to the Alexa service via the internet.',
+        description:
+            'Meet Echo Dot - Our most popular smart speaker with a fabric design. It is our most compact smart speaker that fits perfectly into small space',
         brand: 'Amazon',
         category: 'Electronics',
-        price: 30,
+        price: 29.99,
         countInStock: 0,
         rating: 4,
         numReviews: 12,
     },
-]
+];
 
-export default products
+export default products;
